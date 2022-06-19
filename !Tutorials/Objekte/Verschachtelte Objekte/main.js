@@ -67,3 +67,38 @@ let auto ={
 };
 
 console.log(auto);
+
+
+/* let konto_1 ={
+    iban:"DE534325465432",
+    bic:"FDGRGHHFDS",
+    inhaber:{ 
+        vorname : "Max",
+        nachname : "Mustermann",
+        alter : 20,
+        geschlecht: "männlich"
+        },
+    kontostand:5000,
+    aktiv:true
+};
+
+
+let iban: "DE534325465432";
+let bic: "FDGRGHHFDS";
+let vorname: "Max";
+let nachname: "Mustermann";
+let alter: 20;
+let geschlecht: "männlich";
+
+let kontostand: 5000;
+let aktiv: true; */
+
+
+
+
+
+document.getElementById ( "Demo") innerHTML  = "Absatz wurde geändert ..";
+
+
+
+
