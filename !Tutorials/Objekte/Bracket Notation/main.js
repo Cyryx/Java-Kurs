@@ -67,4 +67,4 @@ let auto ={
 auto["ps"] = 254;
 let modell = "modell";
 
-console.log(`Ein ${auto["marke"]} ${auto[modell]} hat ${auto["ps"]}PS.`);
+console.log(`Ein ${auto["marke"]} ${auto["modell"]} hat ${auto["ps"]}PS.`);
