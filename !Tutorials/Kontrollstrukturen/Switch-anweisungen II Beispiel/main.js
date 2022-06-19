@@ -8,4 +8,3 @@ switch (key) {
     default:
         break;
 }
-
