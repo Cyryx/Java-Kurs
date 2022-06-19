@@ -1,6 +1,6 @@
 "use strict";
 
-let produkt = "Schokol2ade";
+let produkt = "Schokolade";
 
 switch (produkt) {
     case "Brot":
@@ -11,7 +11,7 @@ switch (produkt) {
     case "Apfel":
         console.log(`${produkt} kostet 0,79€`);
         break;
-        
+
     case "Schokolade":
     case "Chips":
         console.log(`${produkt} kostet 0,99€`);
