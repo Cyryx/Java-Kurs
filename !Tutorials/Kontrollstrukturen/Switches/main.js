@@ -11,5 +11,6 @@ switch (ausdruck) {
         //auszufürender Code
         break;
     default:
+        //auszufürender Code
         break;
 }
