@@ -1,23 +1,19 @@
 "use strict";
 
+let x = 0;
 
-let personen_array = [
-    "Kathrin",
-    "Jens",    
-    "Sonja",
-    "Elina",
-    "Maik",
-    "Bente",
-    "Hartmut",
-    "Leon",
-    "Elina",
-    "Laura"
-]
+while (x < 5) {
+    //x++;
+    console.log(`while: ${x}`);
+x++;
+};
+
+let y = 0;
 
 
-
-
-while (0) {
-    console.log(1);
-    personen_array.length--;
+//Vorsicht vor Endlosschleifen
+while (y >=0 && y < 100) {
+    console.log(`Vorsicht vor Endlosschleifen`);
+    y++;
+    
 }
