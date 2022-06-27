@@ -17,7 +17,7 @@ let personen_array = [
 
 
 
-while (1) {
+while (0) {
     console.log(1);
     personen_array.length--;
 }
