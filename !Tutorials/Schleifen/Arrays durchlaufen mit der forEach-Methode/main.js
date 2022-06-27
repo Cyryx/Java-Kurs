@@ -32,4 +32,4 @@ personen_array.forEach(meine_funktion)
 
 personen_array.forEach(function (e) {
     console.log(e);
-})
+});
