@@ -12,17 +12,19 @@ let personen_array = [
     `Elina`,
     `Laura`
 ];
+console.log('**********************************************************************');
+
+for (let i = 0; i < personen_array.length; i++) {
+    console.log(`Hallo ${personen_array[i]}! for-2`);
+}
+
 console.log('***********************************************************************');
 
 for (let i = 0; i < 10; i++) {
     console.log(`Hallo ${personen_array[i]}! for-1`);
 }
 
-console.log('**********************************************************************');
 
-for (let i = 0; i < personen_array.length; i++) {
-    console.log(`Hallo ${personen_array[i]}! for-2`);
-}
 
 console.log('**********************************************************************');
 

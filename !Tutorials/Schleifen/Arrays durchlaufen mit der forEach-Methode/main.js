@@ -10,9 +10,10 @@ let personen_array = [
     `Hartmut`,
     `Leon`,
     `Elina`,
-    `Laura`,
-    `Mia`
+    `Laura`
 ];
+
+
 //console.log(personen_array);
 
 /* 

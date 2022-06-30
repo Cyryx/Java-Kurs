@@ -18,7 +18,10 @@ let brot = [
     "Vollkornbrot"
 ]
 
-let waren = [obst, gemuese, brot]; */
+let waren =[ obst, gemuese, brot]; */
+
+
+
 
 let waren = [
     [

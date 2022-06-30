@@ -1,6 +1,6 @@
 "use strict";
 
-const pizza = {
+let pizza = {
     zutaten:"Teig",
     belag:"tomaten",
     preis:5.99,
@@ -12,7 +12,13 @@ pizza.zutaten ="Sauce";
 delete pizza.preis;
 
 //geht nicht (konstante)
-pizza = {};
-pizza = "Geht nicht";
+//pizza = {};
+//pizza = "Geht nicht";
 
-console.log(pizza);
+let belag = "tomaten";
+let preis = 5.99;
+let zutaten ="teig";
+
+
+
+console.log(pizza.belag);
