@@ -20,7 +20,8 @@ let inhaber_2 ={
 console.log(inhaber_2);
 */
 
-let konto_1 = {
+let konto_1 = 
+    {
     iban: "DE534325465432",
     bic: "FDGRGHHFDS",
     inhaber: {
@@ -33,8 +34,8 @@ let konto_1 = {
     aktiv: true
 };
 
-console.log(konto_1);
-
+console.log(konto_1["inhaber"]["alter"]);
+console.log(konto_1.inhaber.alter);
 let konto_2 = {
     iban: "DE234325323152",
     bic: "RGREVDASH",
@@ -48,7 +49,7 @@ let konto_2 = {
     aktiv: true
 };
 
-console.log(konto_2);
+//console.log(konto_2);
 
 let auto = {
     marke: "VW",
@@ -66,7 +67,7 @@ let auto = {
     preis: 11000
 };
 
-console.log(auto);
+//console.log(auto);
 
 
 /* let konto_1 ={
@@ -97,7 +98,7 @@ let aktiv: true; */
 
 
 
-document.getElementById("Demo").innerHTML = "Absatz wurde geändert ..";
+//document.getElementById("Demo").innerHTML = "Absatz wurde geändert ..";
 
 
 

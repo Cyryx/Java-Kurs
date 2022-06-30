@@ -37,22 +37,14 @@ let waren = [
     [
         "Graubrot",
         "Schwarzbrot",
-        "Vollkornbrot"
+        "Vollkornbrot",
+        [
+            "Möhren",
+            "Sellerie",
+            "Kohls",
+        ]
     ]
 ];
 //Arraygruppe 0
-console.log(waren[0]);
-console.log(waren[0][0]);
-console.log(waren[0][1]);
-console.log(waren[0][2]);
-//Arraygruppe 1
-console.log(waren[1]);
-console.log(waren[1][0]);
-console.log(waren[1][1]);
-console.log(waren[1][2]);
-//Arraygruppe 2
-console.log(waren[2]);
-console.log(waren[2][0]);
-console.log(waren[2][1]);
-console.log(waren[2][2]);
-//console.log(waren[1]);
+console.log(waren);
+console.log(waren[2][3][2]);

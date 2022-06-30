@@ -20,7 +20,7 @@ console.log(personen_array);
 //Syntax: array.includes(Suchwert[, Startindex])
 //nicht destuktiv
 console.log('***********************************************************************');
-let name_var = "Elina";
+let name_var = "ElinaMaus";
 switch (personen_array.includes(name_var, 0)) {
     case true:
         console.log(`${personen_array[personen_array.indexOf(name_var,0)]} wurde an stelle personen_array[${personen_array.indexOf(name_var,0)}] des Arrays gefunden.`)
