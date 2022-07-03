@@ -57,61 +57,37 @@ for (let w = 0; w < werte.length; w++) {
 }
  */
 
-let array_ausgeben = function () {
-    console.log('**********/Object.entries(mein_objekt)*array/**********');
-
-    let paare = Object.entries(mein_objekt);
-    for (let paar of paare) {
-        console.log(paar);
-    }
+//for of Schleife
+for (let index of Object.entries(mein_objekt)) {
+    console.log(index);
 }
 
-let array_eigenschaft_ausgeben = function () {
-    console.log('**********/Object.keys(mein_objekt)*array[e]/**********');
-
-    let eigenschaften = Object.keys(mein_objekt);
-
-    for (let e of eigenschaften) {
-        console.log(e);
-    }
-
-    eigenschaften.forEach(e => {
-        console.log(e);
-    });
-
-    for (let e = 0; e < eigenschaften.length; e++) {
-        console.log(eigenschaften[e]);
-    }
+for (let e of Object.keys(mein_objekt)) {
+    console.log(e);
 }
 
-let array_werte_ausgeben = function () {
-    console.log('**********/Object.values(mein_objekt)*array[e][w]/**********');
-
-    let werte = Object.values(mein_objekt);
-    console.log(werte);
-
-    for (let w of werte) {
-        console.log(w);
-    }
-
-    werte.forEach(w => {
-        console.log(w);
-    });
-
-    for (let w = 0; w < werte.length; w++) {
-        console.log(werte[w]);
-
-    }
+for (let w of Object.values(mein_objekt)) {
+    console.log(w);
 }
 
-let funktions_ausgabe = function () {
-    console.log('Array ausgeben');
-    array_ausgeben();
-    console.log('Array Eigenschaften ausgeben');
-    array_eigenschaft_ausgeben();
-    console.log('Array Werte ausgeben');
-    array_werte_ausgeben();
+//////////
+
+let eigenschaften = Object.keys(mein_objekt);
+let werte = Object.values(mein_objekt);
+
+//////////forEach 
+eigenschaften.forEach(e => {
+    console.log(e);
+});
+
+werte.forEach(w => {
+    console.log(w);
+});
+
+//////////for Schleife
+for (let e = 0; e < eigenschaften.length; e++) {
+    console.log(eigenschaften[e]);
 }
-
-funktions_ausgabe();
-
+for (let w = 0; w < werte.length; w++) {
+    console.log(werte[w]);
+}
