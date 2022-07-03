@@ -102,8 +102,7 @@
 	// Mit “${…}” markierte Stellen sind Platzhalter
 	// und können später mit Tab der Reihe nach durchgeschaltet werden
 	"body": [
-		"`//////////",
-		"console.log('$0');"
+		"//////////",
 	],
 	// Beschreibung des Snippets
 	"description": "Creates a new export function."
@@ -115,7 +114,7 @@
 	// Mit “${…}” markierte Stellen sind Platzhalter
 	// und können später mit Tab der Reihe nach durchgeschaltet werden
 	"body": [
-		"console.log('$0');"
+		"console.log(`${'$0'} '$0'`);"
 	],
 	// Beschreibung des Snippets
 	"description": "Creates a new export function."
