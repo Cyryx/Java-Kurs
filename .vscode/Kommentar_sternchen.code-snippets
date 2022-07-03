@@ -23,7 +23,8 @@
 	// Mit “${…}” markierte Stellen sind Platzhalter
 	// und können später mit Tab der Reihe nach durchgeschaltet werden
 	"body": [
-		"console.log('***********************************************************************');"
+		"console.log('**********//**********');",
+		""
 	
 	],
 	// Beschreibung des Snippets
@@ -90,6 +91,31 @@
 			"alter: `20`",
 		"};"
 	
+	],
+	// Beschreibung des Snippets
+	"description": "Creates a new export function."
+},
+"Kommentar function": {
+	// Die ersten Buchstaben, die eingegeben werden müssen, um das Snippet zu aktivieren
+	"prefix": "Kommentar",
+	// Der Inhalt des Snippets besteht aus einer Liste von Codezeilen
+	// Mit “${…}” markierte Stellen sind Platzhalter
+	// und können später mit Tab der Reihe nach durchgeschaltet werden
+	"body": [
+		"`//////////",
+		"console.log('$0');"
+	],
+	// Beschreibung des Snippets
+	"description": "Creates a new export function."
+},
+"Console function": {
+	// Die ersten Buchstaben, die eingegeben werden müssen, um das Snippet zu aktivieren
+	"prefix": "konsole",
+	// Der Inhalt des Snippets besteht aus einer Liste von Codezeilen
+	// Mit “${…}” markierte Stellen sind Platzhalter
+	// und können später mit Tab der Reihe nach durchgeschaltet werden
+	"body": [
+		"console.log('$0');"
 	],
 	// Beschreibung des Snippets
 	"description": "Creates a new export function."
