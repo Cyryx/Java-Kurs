@@ -23,7 +23,7 @@
 	// Mit “${…}” markierte Stellen sind Platzhalter
 	// und können später mit Tab der Reihe nach durchgeschaltet werden
 	"body": [
-		"console.log('**********//**********');",
+		"console.log('**********$1**********');",
 		""
 	
 	],
