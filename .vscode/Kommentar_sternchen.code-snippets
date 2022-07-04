@@ -119,6 +119,25 @@
 			"let mein_zahlen_array = [112, 23, 34, 94, 335, 66];"
 		],
 		// Beschreibung des Snippets
+		"description": "Creates a new export function."
+	},
+	"Generator_Zahlen function": {
+		// Die ersten Buchstaben, die eingegeben werden müssen, um das Snippet zu aktivieren
+		"prefix": "generator_zahlen",
+		// Der Inhalt des Snippets besteht aus einer Liste von Codezeilen
+		// Mit “${…}” markierte Stellen sind Platzhalter
+		// und können später mit Tab der Reihe nach durchgeschaltet werden
+		"body": [
+			"let wert_zahlen = [];",
+			"for (let i = 1; i <= 20; i++) {",
+			"    wert_zahlen.push(Math.floor(Math.random() * (10000 - 1 + 1)) + 1);",
+			"    while (i == 20) {",
+			"        console.log(`Zahlengenerator Wert: ` + wert_zahlen);",
+			"        break;",
+			"    }",
+			"}"
+		],
+		// Beschreibung des Snippets
 		"description": "Creates a new export function.",
 	}
 }
