@@ -58,18 +58,18 @@ for (let w = 0; w < werte.length; w++) {
  */
 
 //for of Schleife
-for (let index of Object.entries(mein_objekt)) {
+/* for (let index of Object.entries(mein_objekt)) {
     console.log(index);
-}
+} */
 
 for (let e of Object.keys(mein_objekt)) {
     console.log(e);
 }
-
+/* 
 for (let w of Object.values(mein_objekt)) {
     console.log(w);
-}
-
+} */
+/*
 //////////
 
 let eigenschaften = Object.keys(mein_objekt);
@@ -91,3 +91,4 @@ for (let e = 0; e < eigenschaften.length; e++) {
 for (let w = 0; w < werte.length; w++) {
     console.log(werte[w]);
 }
+*/
