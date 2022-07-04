@@ -128,7 +128,7 @@
 		// Mit “${…}” markierte Stellen sind Platzhalter
 		// und können später mit Tab der Reihe nach durchgeschaltet werden
 		"body": [
-			"let max =100;",
+			"let max = 100;",
 			"let wert_zahlen = [];",
 			"for (let i = 1; i <= 20; i++) {",
 			"    wert_zahlen.push(Math.floor(Math.random() * (max - 1 + 1)) + 1);",
