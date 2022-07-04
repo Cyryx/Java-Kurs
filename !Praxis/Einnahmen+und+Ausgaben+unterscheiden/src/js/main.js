@@ -25,10 +25,10 @@ const haushaltsbuch = {
         //Daten erfassen
         this.eintraege.push(
             {
-                titel: prompt("Titel:",`Test`),
-                typ: prompt("Typ (Einnahme oder Ausgabe):",typ[Math.floor(Math.random()*typ.length)]),
-                betrag: parseInt(prompt("Betrag (in Cent):",Math.floor(Math.random() * (max - min + 1)) + min)),
-                datum: prompt("Datum (jjjj-mm-tt):",`2020-02-02`)
+                titel: prompt("Titel:", `Test`),
+                typ: prompt("Typ (Einnahme oder Ausgabe):", typ[Math.floor(Math.random() * typ.length)]),
+                betrag: parseInt(prompt("Betrag (in Cent):", Math.floor(Math.random() * (max - min + 1)) + min)),
+                datum: prompt("Datum (jjjj-mm-tt):", `2020-02-02`)
             }
         )
     },
@@ -71,8 +71,6 @@ const haushaltsbuch = {
         this.gesamtbilanz = neue_gesamtbilanz;
     },
 
-
-
     gesamtbilanz_ausgeben() {
         // Gesamtbilanz ausgaben
         console.log(
@@ -83,18 +81,23 @@ const haushaltsbuch = {
         )
     },
 
+
     eintrag_hinzufuegen() {
-        this.eintrag_erfassen();
-        this.eintraege_ausgeben();
-        this.gesamtbilanz_erstellen();
-        this.gesamtbilanz_ausgeben();
+        let weiterer_eintrag = true;
+
+        while (weiterer_eintrag) {
+            this.eintrag_erfassen();
+            this.eintraege_ausgeben();
+            this.gesamtbilanz_erstellen();
+            this.gesamtbilanz_ausgeben();
+            weiterer_eintrag = confirm("Eintrag hinzufügen?");
+        }
 
     },
 };
 
 
 
-haushaltsbuch.eintrag_hinzufuegen();
 haushaltsbuch.eintrag_hinzufuegen();
 
 console.log(haushaltsbuch);
