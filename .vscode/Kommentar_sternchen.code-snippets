@@ -15,25 +15,20 @@
 	// 	],
 	// 	"description": "Log output to console"
 	// }
- // Ein Snippet
- "Export function": {
-	// Die ersten Buchstaben, die eingegeben werden müssen, um das Snippet zu aktivieren
-	"prefix": "stern",
-	// Der Inhalt des Snippets besteht aus einer Liste von Codezeilen
-	// Mit “${…}” markierte Stellen sind Platzhalter
-	// und können später mit Tab der Reihe nach durchgeschaltet werden
-	"body": [
-		"console.log('**********$1**********');",
-		""
-	
-	],
-	// Beschreibung des Snippets
-	"description": "Creates a new export function."
-},
-
-
-
-
+	// Ein Snippet
+	"Export function": {
+		// Die ersten Buchstaben, die eingegeben werden müssen, um das Snippet zu aktivieren
+		"prefix": "stern",
+		// Der Inhalt des Snippets besteht aus einer Liste von Codezeilen
+		// Mit “${…}” markierte Stellen sind Platzhalter
+		// und können später mit Tab der Reihe nach durchgeschaltet werden
+		"body": [
+			"console.log('**********$1**********');",
+			""
+		],
+		// Beschreibung des Snippets
+		"description": "Creates a new export function."
+	},
 	// Place your Java Kurs-Arbeitsbereich snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
 	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
 	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
@@ -50,17 +45,17 @@
 	// 	],
 	// 	"description": "Log output to console"
 	// }
- // Ein Snippet
- "Array function": {
-	// Die ersten Buchstaben, die eingegeben werden müssen, um das Snippet zu aktivieren
-	"prefix": "mein_array",
-	// Der Inhalt des Snippets besteht aus einer Liste von Codezeilen
-	// Mit “${…}” markierte Stellen sind Platzhalter
-	// und können später mit Tab der Reihe nach durchgeschaltet werden
-	"body": [
-		"let mein_array = [",
+	// Ein Snippet
+	"Array function": {
+		// Die ersten Buchstaben, die eingegeben werden müssen, um das Snippet zu aktivieren
+		"prefix": "personen_array",
+		// Der Inhalt des Snippets besteht aus einer Liste von Codezeilen
+		// Mit “${…}” markierte Stellen sind Platzhalter
+		// und können später mit Tab der Reihe nach durchgeschaltet werden
+		"body": [
+			"let mein_personen_array = [",
 			"`Kathrin`,",
-			"`Jens`,",    
+			"`Jens`,",
 			"`Sonja`,",
 			"`Elina`,",
 			"`Maik`,",
@@ -69,53 +64,61 @@
 			"`Leon`,",
 			"`Elina`,",
 			"`Laura`",
-		"];"
-	
-	],
-	// Beschreibung des Snippets
-	"description": "Creates a new export function."
-},
-
-
-
-"Objekt function": {
-	// Die ersten Buchstaben, die eingegeben werden müssen, um das Snippet zu aktivieren
-	"prefix": "mein_objekt",
-	// Der Inhalt des Snippets besteht aus einer Liste von Codezeilen
-	// Mit “${…}” markierte Stellen sind Platzhalter
-	// und können später mit Tab der Reihe nach durchgeschaltet werden
-	"body": [
-		"let mein_objekt = {",
+			"];"
+		],
+		// Beschreibung des Snippets
+		"description": "Creates a new export function."
+	},
+	"Objekt function": {
+		// Die ersten Buchstaben, die eingegeben werden müssen, um das Snippet zu aktivieren
+		"prefix": "mein_objekt",
+		// Der Inhalt des Snippets besteht aus einer Liste von Codezeilen
+		// Mit “${…}” markierte Stellen sind Platzhalter
+		// und können später mit Tab der Reihe nach durchgeschaltet werden
+		"body": [
+			"let mein_objekt = {",
 			"vorname: `Laura`,",
 			"nachname: `Mustermann`,",
 			"alter: `20`",
-		"};"
-	
-	],
-	// Beschreibung des Snippets
-	"description": "Creates a new export function."
-},
-"Kommentar function": {
-	// Die ersten Buchstaben, die eingegeben werden müssen, um das Snippet zu aktivieren
-	"prefix": "Kommentar",
-	// Der Inhalt des Snippets besteht aus einer Liste von Codezeilen
-	// Mit “${…}” markierte Stellen sind Platzhalter
-	// und können später mit Tab der Reihe nach durchgeschaltet werden
-	"body": [
-		"//////////",
-	],
-	// Beschreibung des Snippets
-	"description": "Creates a new export function."
-},
-"Console function": {
-	// Die ersten Buchstaben, die eingegeben werden müssen, um das Snippet zu aktivieren
-	"prefix": "konsole",
-	// Der Inhalt des Snippets besteht aus einer Liste von Codezeilen
-	// Mit “${…}” markierte Stellen sind Platzhalter
-	// und können später mit Tab der Reihe nach durchgeschaltet werden
-	"body": [
-		"console.log(`${'$0'} '$0'`);"
-	],
-	// Beschreibung des Snippets
-	"description": "Creates a new export function."
+			"};"
+		],
+		// Beschreibung des Snippets
+		"description": "Creates a new export function."
+	},
+	"Kommentar function": {
+		// Die ersten Buchstaben, die eingegeben werden müssen, um das Snippet zu aktivieren
+		"prefix": "Kommentar",
+		// Der Inhalt des Snippets besteht aus einer Liste von Codezeilen
+		// Mit “${…}” markierte Stellen sind Platzhalter
+		// und können später mit Tab der Reihe nach durchgeschaltet werden
+		"body": [
+			"//////////",
+		],
+		// Beschreibung des Snippets
+		"description": "Creates a new export function."
+	},
+	"Console function": {
+		// Die ersten Buchstaben, die eingegeben werden müssen, um das Snippet zu aktivieren
+		"prefix": "konsole",
+		// Der Inhalt des Snippets besteht aus einer Liste von Codezeilen
+		// Mit “${…}” markierte Stellen sind Platzhalter
+		// und können später mit Tab der Reihe nach durchgeschaltet werden
+		"body": [
+			"console.log(`${'$0'} '$0'`);"
+		],
+		// Beschreibung des Snippets
+		"description": "Creates a new export function."
+	},
+	"Array_Zahlen function": {
+		// Die ersten Buchstaben, die eingegeben werden müssen, um das Snippet zu aktivieren
+		"prefix": "zahlen_array",
+		// Der Inhalt des Snippets besteht aus einer Liste von Codezeilen
+		// Mit “${…}” markierte Stellen sind Platzhalter
+		// und können später mit Tab der Reihe nach durchgeschaltet werden
+		"body": [
+			"let mein_zahlen_array = [112, 23, 34, 94, 335, 66];"
+		],
+		// Beschreibung des Snippets
+		"description": "Creates a new export function.",
+	}
 }
