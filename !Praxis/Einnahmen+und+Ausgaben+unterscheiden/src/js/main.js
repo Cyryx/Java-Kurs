@@ -1,6 +1,10 @@
 "use strict";
-let min = 1;
-let max = 10000;
+let min = 1,
+    datum_tag_min = 10,
+    datum_monat_min = 10;
+let max = 10000,
+    datum_tag_max = 30,
+    datum_monat_max = 12;
 let typ = ["Ausgabe", "Einnahme"]
 
 const haushaltsbuch = {
@@ -28,9 +32,24 @@ const haushaltsbuch = {
                 titel: prompt("Titel:", `Test`),
                 typ: prompt("Typ (Einnahme oder Ausgabe):", typ[Math.floor(Math.random() * typ.length)]),
                 betrag: parseInt(prompt("Betrag (in Cent):", Math.floor(Math.random() * (max - min + 1)) + min)),
-                datum: prompt("Datum (jjjj-mm-tt):", `2020-02-02`)
+                datum: prompt("Datum (jjjj-mm-tt):",
+                    `2020-${Math.floor(Math.random() * (datum_monat_max - datum_monat_min + 1)) + datum_monat_min}-${Math.floor(Math.random() * (datum_tag_max - datum_tag_min + 1)) + datum_tag_min}`
+                )
             }
         )
+
+    },
+
+    eintraege_sortieren() {
+        this.eintraege.sort(function (a, b) {
+            if (a.datum > b.datum) {
+                return -1;
+            } else if (a.datum < b.datum) {
+                return 1;
+            } else {
+                return 0;
+            }
+        })
     },
 
     eintraege_ausgeben() {
@@ -52,7 +71,6 @@ const haushaltsbuch = {
             ausgaben: 0,
             bilanz: 0
         };
-
         this.eintraege.forEach(function (eintrag) {
             switch (eintrag.typ) {
                 case "Einnahme":
@@ -81,19 +99,20 @@ const haushaltsbuch = {
         )
     },
 
-
     eintrag_hinzufuegen() {
         let weiterer_eintrag = true;
 
         while (weiterer_eintrag) {
             this.eintrag_erfassen();
+            this.eintraege_sortieren();
             this.eintraege_ausgeben();
             this.gesamtbilanz_erstellen();
             this.gesamtbilanz_ausgeben();
             weiterer_eintrag = confirm("Eintrag hinzufügen?");
         }
 
-    },
+    }
+
 };
 
 

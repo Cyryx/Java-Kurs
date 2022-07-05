@@ -59,7 +59,7 @@ for (let i = 0; i <= zaehler; i++) {
 }
 
 let zahlen_sortiert = wert_zahlen.sort(function (a, b) {
-   return a-b;
+    return a - b;
 })
 
 console.log(zahlen_sortiert);
