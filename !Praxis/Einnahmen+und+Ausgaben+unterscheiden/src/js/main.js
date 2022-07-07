@@ -10,12 +10,12 @@ let max = 10000,
     datum_jahr_max = 99;
 
 let typ = ["Ausgabe", "Einnahme"]
-
+11
 const haushaltsbuch = {
 
     gesamtbilanz: new Map(),
-
     eintraege: [],
+
 
     eintrag_erfassen() { //DEMO
         //Daten erfassen
@@ -26,7 +26,9 @@ const haushaltsbuch = {
         neuer_eintrag.set("titel", "Test");
         neuer_eintrag.set(`typ`, typ[zufallswert]);
         neuer_eintrag.set(`betrag`, parseInt(Math.floor(Math.random() * (max - min + 1)) + min));
-        neuer_eintrag.set(`datum`, `20${Math.floor(Math.random() * (datum_jahr_max - datum_jahr_min + 1)) + datum_jahr_min}-${Math.floor(Math.random() * (datum_monat_max - datum_monat_min + 1)) + datum_monat_min}-${Math.floor(Math.random() * (datum_tag_max - datum_tag_min + 1)) + datum_tag_min}`);
+        neuer_eintrag.set(`datum`, new Date(prompt("Datum (tt.mm.jjjj):")));
+        neuer_eintrag.set(`timestamp`,Date.now());
+        //neuer_eintrag.set(`datum`, `20${Math.floor(Math.random() * (datum_jahr_max - datum_jahr_min + 1)) + datum_jahr_min}-${Math.floor(Math.random() * (datum_monat_max - datum_monat_min + 1)) + datum_monat_min}-${Math.floor(Math.random() * (datum_tag_max - datum_tag_min + 1)) + datum_tag_min}`);
 
         this.eintraege.push(neuer_eintrag);
     },
@@ -53,7 +55,7 @@ const haushaltsbuch = {
                 return 1;
             } else {
                 return 0;
-            } 
+            }
         })
     },
     /*eintraege_sortieren() {//Original
@@ -74,8 +76,14 @@ const haushaltsbuch = {
             console.log(
                 `Titel: ${eintrag.get("titel")}\n`
                 + `Typ: ${eintrag.get("typ")}\n`
-                + `Betrag: ${eintrag.get("betrag")} ct)\n`
-                + `Datum: ${eintrag.get("datum")}\n`
+                + `Betrag: ${eintrag.get("betrag")} ct\n`
+                + `Datum: ${eintrag.get("datum").toLocaleDateString("de-DE", {
+                    year: "numeric",
+                    month: "2-digit",
+                    weekday: "long",
+                    day: "2-digit"
+                })}\n`,
+                `Timestamp: ${Date(eintrag.get("timestamp"))}`,
             );
         });
     },
