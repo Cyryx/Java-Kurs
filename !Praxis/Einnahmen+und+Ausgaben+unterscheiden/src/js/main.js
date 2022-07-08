@@ -1,16 +1,16 @@
 "use strict";
 let min = 1,
-    datum_tag_min = 10,
-    datum_monat_min = 10,
-    datum_jahr_min = 10;
+    datum_tag_min = 5,
+    datum_monat_min = 8,
+    datum_jahr_min = 1985;
 
-let max = 10,
-    datum_tag_max = 30,
+let max = 31,
+    datum_tag_max = 31,
     datum_monat_max = 12,
-    datum_jahr_max = 99;
+    datum_jahr_max = 2022;
 
 let typ = ["Ausgabe", "Einnahme"]
-11
+
 const haushaltsbuch = {
 
     gesamtbilanz: new Map(),
@@ -24,32 +24,24 @@ const haushaltsbuch = {
 
         neuer_eintrag.set("titel", "Test");
         neuer_eintrag.set(`typ`, typ[zufallswert]);
-        neuer_eintrag.set(`betrag`, this.betrag_Verarbeiten(prompt("Betrag")));
-        neuer_eintrag.set(`datum`, new Date(prompt("Datum (tt.mm.jjjj):")));
+        neuer_eintrag.set(`betrag`, this.betrag_Verarbeiten(Math.floor(Math.random() * (max - min + 1)) + min))/* prompt("Betrag") */;
+        neuer_eintrag.set(`datum`, this.zufalls_Datum());/* new Date(prompt("Datum (tt.mm.jjjj):"))) */;
         neuer_eintrag.set(`timestamp`, Date.now());
-        //neuer_eintrag.set(`datum`, `20${Math.floor(Math.random() * (datum_jahr_max - datum_jahr_min + 1)) + datum_jahr_min}-${Math.floor(Math.random() * (datum_monat_max - datum_monat_min + 1)) + datum_monat_min}-${Math.floor(Math.random() * (datum_tag_max - datum_tag_min + 1)) + datum_tag_min}`);
         this.eintraege.push(neuer_eintrag);
     },
 
     betrag_Verarbeiten(betrag) {
         // Bsp. .replace("23,64") -> "23.64" -> .parseFloat(23.64) -> 23.64*100 -> 2364
-        return (parseFloat(betrag.replace(",", ".")) * 100);
+        return (parseFloat(betrag) * 100);
     },
-    /* eintrag_erfassen() { //Original
-        //Daten erfassen
-        this.eintraege.push(
-            {
-                titel: prompt("Titel:", `Test`),
-                typ: prompt("Typ (Einnahme oder Ausgabe):", typ[Math.floor(Math.random() * typ.length)]),
-                betrag: parseInt(prompt("Betrag (in Cent):", Math.floor(Math.random() * (max - min + 1)) + min)),
-                datum: prompt("Datum (jjjj-mm-tt):",
-                    `2020-${Math.floor(Math.random() * (datum_monat_max - datum_monat_min + 1)) + datum_monat_min}-${Math.floor(Math.random() * (datum_tag_max - datum_tag_min + 1)) + datum_tag_min}`
-                )
-            }
-        )
 
-    }, */
-
+    zufalls_Datum() {
+        return new Date(
+            Math.floor(Math.random() * (datum_jahr_max - datum_jahr_min + 1)) + datum_jahr_min,
+            Math.floor(Math.random() * (datum_monat_max - datum_monat_min + 1)) + datum_monat_min,
+            Math.floor(Math.random() * (datum_tag_max - datum_tag_min + 1)) + datum_tag_min
+        );
+    },
 
     eintraege_sortieren() {//Demo
         this.eintraege.sort(function (a, b) {
@@ -62,17 +54,6 @@ const haushaltsbuch = {
             }
         })
     },
-    /*eintraege_sortieren() {//Original
-        this.eintraege.sort(function (a, b) {
-            if (a.datum > b.datum) {
-                return -1;
-            } else if (a.datum < b.datum) {
-                return 1;
-            } else {
-                return 0;
-            }
-        })
-    }, */
 
     eintraege_ausgeben() {//Demo
         console.clear();
@@ -87,21 +68,10 @@ const haushaltsbuch = {
                     weekday: "long",
                     day: "numeric"
                 })}\n`,
-                `Timestamp: ${Date(eintrag.get("timestamp"))}`,
+                `Timestamp: ${eintrag.get("timestamp")}`,/* ${Date(eintrag.get("timestamp"))}`, */
             );
         });
     },
-    /*     eintraege_ausgeben() {//Original
-            console.clear();
-            this.eintraege.forEach(function (eintrag) {
-                console.log(
-                    `Titel: ${eintrag.titel}\n`
-                    + `Typ: ${eintrag.typ}\n`
-                    + `Betrag: ${eintrag.betrag} ct\n`
-                    + `Datum: ${eintrag.datum}\n`
-                );
-            });
-        }, */
 
     gesamtbilanz_erstellen() {//Demo
         //Einnahme/Ausgabe berechnen
@@ -155,10 +125,10 @@ const haushaltsbuch = {
     gesamtbilanz_ausgeben() {//Demo
         // Gesamtbilanz ausgaben
         console.log(
-            `Einnahmen: ${(this.gesamtbilanz.get("einnahmen")/ 100).toFixed(2)} €\n`
-            + `Ausgaben: ${(this.gesamtbilanz.get("ausgaben")/ 100).toFixed(2)} €\n`
-            + `Bilanz: ${(this.gesamtbilanz.get("bilanz")/ 100).toFixed(2)} €\n`
-            + `Bilanz ist positiv: ${(this.gesamtbilanz.get("bilanz")/ 100) >= 0}\n`
+            `Einnahmen: ${(this.gesamtbilanz.get("einnahmen") / 100).toFixed(2)} €\n`
+            + `Ausgaben: ${(this.gesamtbilanz.get("ausgaben") / 100).toFixed(2)} €\n`
+            + `Bilanz: ${(this.gesamtbilanz.get("bilanz") / 100).toFixed(2)} €\n`
+            + `Bilanz ist positiv: ${(this.gesamtbilanz.get("bilanz") / 100) >= 0}\n`
         )
     },
     /* gesamtbilanz_ausgeben() {//Original
@@ -175,7 +145,7 @@ const haushaltsbuch = {
         let weiterer_eintrag = true;
 
         while (weiterer_eintrag) {
-            weiterer_eintrag = confirm("Eintrag hinzufügen?");//prompt("Wieviele Einträge hinzufügen?");
+            weiterer_eintrag = /* confirm("Eintrag hinzufügen?"); */prompt("Wieviele Einträge hinzufügen?");
             for (let i = 0; i < weiterer_eintrag; i++) {
                 if (i < weiterer_eintrag) {
                     this.eintrag_erfassen();
