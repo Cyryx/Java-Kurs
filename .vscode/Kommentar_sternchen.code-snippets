@@ -97,7 +97,7 @@
 		// Beschreibung des Snippets
 		"description": "Creates a new export function."
 	},
-	"Console function": {
+	/* "Console function": {
 		// Die ersten Buchstaben, die eingegeben werden müssen, um das Snippet zu aktivieren
 		"prefix": "konsole",
 		// Der Inhalt des Snippets besteht aus einer Liste von Codezeilen
@@ -108,7 +108,7 @@
 		],
 		// Beschreibung des Snippets
 		"description": "Creates a new export function."
-	},
+	}, */
 	"Array_Zahlen function": {
 		// Die ersten Buchstaben, die eingegeben werden müssen, um das Snippet zu aktivieren
 		"prefix": "zahlen_array",
@@ -140,5 +140,17 @@
 		],
 		// Beschreibung des Snippets
 		"description": "Creates a new export function.",
-	}
-}
+	},
+
+"Konsole function": {
+	// Die ersten Buchstaben, die eingegeben werden müssen, um das Snippet zu aktivieren
+	"prefix": "konsole.log",
+	// Der Inhalt des Snippets besteht aus einer Liste von Codezeilen
+	// Mit “${…}” markierte Stellen sind Platzhalter
+	// und können später mit Tab der Reihe nach durchgeschaltet werden
+	"body": [
+		"console.log($0);"	
+	],
+	// Beschreibung des Snippets
+	"description": "Creates a new export function.",
+}}
