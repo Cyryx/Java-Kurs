@@ -14,7 +14,15 @@ console.log(s.trimStart());
 console.log(s.repeat(1)); */
 
 let regex = /i\w{4}/g;
-
+/* 
 console.log(s.search(regex));
 console.log(s.replace(regex, "opsum"));
-console.log(s.match(regex));
+console.log(s.match(regex)); 
+*/
+
+let regex_1 = /^\d+((,|\.)\d\d?)?$/;
+let zahl = "0,2";
+console.log(zahl);
+if (zahl.match(regex_1) !== null) {
+    console.log(true);
+}else {console.log(false);}
