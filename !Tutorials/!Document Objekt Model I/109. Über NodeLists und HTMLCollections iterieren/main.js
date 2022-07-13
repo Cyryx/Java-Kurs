@@ -6,6 +6,8 @@ let node_list_1 = document.querySelectorAll("p");
 let node_list_2 = document.querySelectorAll("ul");
 //console.log(html_collection_1);
 
+
+//Browser Kompatibilität beachten
 console.log('**********For Schleife**********');
 for (let i = 0; i < html_collection_1.length; i++) {
     console.log(html_collection_1[i]);
