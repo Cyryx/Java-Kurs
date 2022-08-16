@@ -1,117 +1,25 @@
 "use strict";
-let lorem = ['lorem', 'ipsum', 'dolor', 'sit', 'amet', 'consectetur',
-    'adipiscing', 'elit', 'curabitur', 'vel', 'hendrerit', 'libero',
-    'eleifend', 'blandit', 'nunc', 'ornare', 'odio', 'ut',
-    'orci', 'gravida', 'imperdiet', 'nullam', 'purus', 'lacinia',
-    'a', 'pretium', 'quis', 'congue', 'praesent', 'sagittis',
-    'laoreet', 'auctor', 'mauris', 'non', 'velit', 'eros',
-    'dictum', 'proin', 'accumsan', 'sapien', 'nec', 'massa',
-    'volutpat', 'venenatis', 'sed', 'eu', 'molestie', 'lacus',
-    'quisque', 'porttitor', 'ligula', 'dui', 'mollis', 'tempus',
-    'at', 'magna', 'vestibulum', 'turpis', 'ac', 'diam',
-    'tincidunt', 'id', 'condimentum', 'enim', 'sodales', 'in',
-    'hac', 'habitasse', 'platea', 'dictumst', 'aenean', 'neque',
-    'fusce', 'augue', 'leo', 'eget', 'semper', 'mattis',
-    'tortor', 'scelerisque', 'nulla', 'interdum', 'tellus', 'malesuada',
-    'rhoncus', 'porta', 'sem', 'aliquet', 'et', 'nam']
-let typ = ["Ausgabe", "Einnahme"]
 
 const haushaltsbuch = {
 
     gesamtbilanz: new Map(),
     eintraege: [],
-    fehler: [],
-    //
-    getRandomIntInclusive(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    },
-    //
-    eintrag_erfassen() {
-        let zufallswert_typ = Math.floor(Math.random() * (1 - 0 + 1) + 0);
-        let zufallswert_betrag = (Math.random() * (10000 - 0 + 1) + 0);
 
+    eintrag_hinzufuegen(formulardaten) {
         let neuer_eintrag = new Map();
-        neuer_eintrag.set("titel", /* this.titel_verarbeiten( */lorem[this.getRandomIntInclusive(0, lorem.length)]);//prompt("Titel:")));
-        neuer_eintrag.set("typ", this.typ_verarbeiten(typ[zufallswert_typ]));//prompt("Typ (Einnahme oder Ausgabe):")));
-        neuer_eintrag.set("betrag", this.betrag_verarbeiten(zufallswert_betrag.toFixed(2)));//prompt("Betrag (in Euro, ohne €-Zeichen):")));
-        neuer_eintrag.set("datum", this.datum_verarbeiten(`${this.getRandomIntInclusive(2000, 2050)}-0${this.getRandomIntInclusive(1, 9)}-${this.getRandomIntInclusive(10, 30)}`));//prompt("Datum (jjjj-mm-tt):")));
+
+        neuer_eintrag.set("titel", formulardaten.titel);
+        neuer_eintrag.set("typ", formulardaten.typ);
+        neuer_eintrag.set("betrag", formulardaten.betrag);
+        neuer_eintrag.set("datum", formulardaten.datum);
         neuer_eintrag.set("timestamp", Date.now());
-        if (this.fehler.length === 0) {
-            this.eintraege.push(neuer_eintrag);
-        } else {
-            console.log("Folgende Fehler wurden gefunden:")
-            this.fehler.forEach(fehler => console.log(fehler));
-        }
-    },
+        this.eintraege.push(neuer_eintrag);
 
-    titel_verarbeiten(titel) {
-        titel = titel.trim();
-        if (this.titel_validieren(titel)) {
-            return titel;
-        } else {
-            this.fehler.push("Kein Titel angegeben.");
-        }
-    },
+        this.eintraege_sortieren();
+            this.eintraege_anzeigen();
+            this.gesamtbilanz_erstellen();
+            this.gesamtbilanz_anzeigen();
 
-    titel_validieren(titel) {
-        if (titel !== "") {
-            return true;
-        } else {
-            return false;
-        }
-    },
-
-    typ_verarbeiten(typ) {
-        typ = typ.trim().toLowerCase();
-        if (this.typ_validieren(typ)) {
-            return typ;
-        } else {
-            this.fehler.push(`Ungültiger Eintrags-Typ: "${typ}".`);
-        }
-    },
-
-    typ_validieren(typ) {
-        if (typ.match(/^(?:einnahme|ausgabe)$/) !== null) {
-            return true;
-        } else {
-            return false;
-        }
-    },
-
-    betrag_verarbeiten(betrag) {
-        betrag = betrag.trim();
-        if (this.betrag_validieren(betrag)) {
-            return parseFloat(betrag.replace(",", ".")) * 100;
-        } else {
-            this.fehler.push(`Ungültiger Betrag: ${betrag} €.`);
-        }
-    },
-
-    betrag_validieren(betrag) {
-        if (betrag.match(/^\d+(?:(?:,|\.)\d\d?)?$/) !== null) {
-            return true;
-        } else {
-            return false;
-        }
-    },
-
-    datum_verarbeiten(datum) {
-        datum = datum.trim();
-        if (this.datum_validieren(datum)) {
-            return new Date(`${datum} 00:00:00`);
-        } else {
-            this.fehler.push(`Ungültiges Datumsformat: "${datum}".`);
-        }
-    },
-
-    datum_validieren(datum) {
-        if (datum.match(/^\d{4}-\d{2}-\d{2}$/) !== null) {
-            return true;
-        } else {
-            return false;
-        }
     },
 
     eintraege_sortieren() {
@@ -262,26 +170,7 @@ const haushaltsbuch = {
     gesamtbilanz_anzeigen() {
         document.querySelectorAll("#gesamtbilanz").forEach(gesamtbilanz => gesamtbilanz.remove());
         document.querySelector("body").insertAdjacentElement("beforeend", this.html_gesamtbilanz_generieren())
-    },
-
-    eintrag_hinzufuegen() {
-        let weiterer_eintrag = true;
-        while (weiterer_eintrag ) {
-            weiterer_eintrag = /* confirm("Eintrag hinzufügen?"); */prompt("Wieviele Einträge hinzufügen?");
-
-            for (let i = 0; i < weiterer_eintrag; i++) {
-                if (i < weiterer_eintrag) {
-                    if (this.fehler.length === 0) {
-                        this.eintrag_erfassen();
-                        this.eintraege_sortieren();
-                        this.eintraege_anzeigen();
-                        this.gesamtbilanz_erstellen();
-                        this.gesamtbilanz_anzeigen();
-                    } else { this.fehler = []; }
-                } else {
-                    return false;
-                }
-            }
-        }
     }
+
+    
 };
