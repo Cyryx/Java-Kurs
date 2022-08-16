@@ -3,7 +3,7 @@
 const eingabeformular = {
 
     formulardaten_holen(e) {
-        return {
+        return { 
             titel: e.target.elements.titel.value,
             betrag: e.target.elements.betrag.value,
             einnahme: e.target.elements.einnahme.checked,
