@@ -50,7 +50,9 @@ const eingabeformular = {
         return fehler;
     },
     datum_aktualisieren(formulardaten) {
-        document.querySelector("#datum").valueAsDate = new Date();
+        let datum_input = document.querySelector("#datum")
+        if(datum_input !== null)
+        datum_input.valueAsDate = new Date();
     },
 
     absenden_event_hinzufuegen(eingabeformular) {
@@ -67,7 +69,7 @@ const eingabeformular = {
                 e.target.reset();
                 this.datum_aktualisieren();            }
             else
-                console.log(formular_fehler)
+                    formular_fehler = [];
 
         })
     },
