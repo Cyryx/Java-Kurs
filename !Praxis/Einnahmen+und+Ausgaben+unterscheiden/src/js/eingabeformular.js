@@ -154,6 +154,8 @@ const eingabeformular = {
         document
             .querySelector("#navigationsleiste")
             .insertAdjacentElement("afterend", eingabeformular.html_generieren());
+        haushaltsbuch.gesamtbilanz_erstellen();
+        haushaltsbuch.gesamtbilanz_anzeigen();
         this.datum_aktualisieren();
     },
 };

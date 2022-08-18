@@ -153,4 +153,11 @@
 		// Beschreibung des Snippets
 		"description": "Creates a new export function.",
 	},
+	"Array_Datum function": {
+		"prefix": "datum_array",
+		"body": [
+			"let mein_datums_array = [1985,8,5];"
+		],
+		"description": "Creates a new export function."
+	},
 }
