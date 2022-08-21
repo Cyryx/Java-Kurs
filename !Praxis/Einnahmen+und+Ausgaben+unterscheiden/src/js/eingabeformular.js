@@ -6,15 +6,15 @@ const eingabeformular = {
             titel: e.target.elements.titel.value,
             betrag: e.target.elements.betrag.value,
             einnahme: e.target.elements.einnahme.checked,
-            ausgabe: e.target.elements.ausgabe.checked,
             datum: e.target.elements.datum.valueAsDate,
         };
     },
 
     formulardaten_verarbeiten(formulardaten) {
         let typ;
-        if (formulardaten.einnahme === true) typ = "einnahme";
-        else if (formulardaten.ausgabe === true) typ = "ausgabe";
+        // if (formulardaten.einnahme === true) typ = "einnahme";
+        // else if (formulardaten.ausgabe === true) typ = "ausgabe";
+        typ = formulardaten.einnahme === true ? "einnahme" : "ausgabe";
 
         return {
             titel: formulardaten.titel.trim(),
@@ -27,24 +27,21 @@ const eingabeformular = {
     formulardaten_validieren(formulardaten) {
         let fehler = [];
 
-        if (formulardaten.titel === "") fehler.push("Titel");
+        if (formulardaten.titel === "")
+            fehler.push("Titel");
 
         if (formulardaten.betrag === 0 || isNaN(formulardaten.betrag))
             fehler.push("Betrag");
 
-        if (
-            formulardaten.typ === undefined ||
-            formulardaten.typ.match(/^(?:einnahme|ausgabe)$/) === null
-        )
-            fehler.push("Typ");
-
-        if (formulardaten.datum === null) fehler.push("Datum");
+        if (formulardaten.datum === null)
+            fehler.push("Datum");
         return fehler;
     },
 
     datum_aktualisieren(formulardaten) {
         let datum_input = document.querySelector("#datum");
-        if (datum_input !== null) datum_input.valueAsDate = new Date();
+        if (datum_input !== null)
+            datum_input.valueAsDate = new Date();
     },
 
     eintrag_entfernen() {
@@ -52,26 +49,22 @@ const eingabeformular = {
     },
 
     absenden_event_hinzufuegen(eingabeformular) {
-        eingabeformular
-            .querySelector("#eingabeformular")
-            .addEventListener("submit", (e) => {
-                e.preventDefault();
+        eingabeformular.querySelector("#eingabeformular").addEventListener("submit", (e) => {
+            e.preventDefault();
 
-                let formulardaten = this.formulardaten_verarbeiten(
-                    this.formulardaten_holen(e)
-                );
+            let formulardaten = this.formulardaten_verarbeiten(this.formulardaten_holen(e));
 
-                let formular_fehler = this.formulardaten_validieren(formulardaten);
-                if (formular_fehler.length === 0) {
-                    haushaltsbuch.eintrag_hinzufuegen(formulardaten);
-                    e.target.reset();
-                    this.datum_aktualisieren();
-                    this.fehlerbox_entfernen();
-                } else {
-                    this.fehlerbox_entfernen();
-                    this.fehlerbox_anzeigen(formular_fehler);
-                }
-            });
+            let formular_fehler = this.formulardaten_validieren(formulardaten);
+            if (formular_fehler.length === 0) {
+                haushaltsbuch.eintrag_hinzufuegen(formulardaten);
+                e.target.reset();
+                this.datum_aktualisieren();
+                this.fehlerbox_entfernen();
+            } else {
+                this.fehlerbox_entfernen();
+                this.fehlerbox_anzeigen(formular_fehler);
+            }
+        });
     },
 
     html_fehlerbox_generieren(formular_fehler) {
@@ -99,17 +92,13 @@ const eingabeformular = {
             "#eingabeformular-container"
         );
         if (eingabeformular_container !== null)
-            document
-                .querySelector("#eingabeformular-container")
-                .insertAdjacentElement(
-                    "afterbegin",
-                    this.html_fehlerbox_generieren(formular_fehler)
-                );
+            document.querySelector("#eingabeformular-container").insertAdjacentElement("afterbegin", this.html_fehlerbox_generieren(formular_fehler));
     },
 
     fehlerbox_entfernen() {
         let fehlerbox = document.querySelector(".fehlerbox");
-        if (fehlerbox !== null) fehlerbox.remove();
+        if (fehlerbox !== null)
+            fehlerbox.remove();
     },
 
     html_generieren() {
@@ -151,11 +140,12 @@ const eingabeformular = {
     },
 
     anzeigen() {
-        document
-            .querySelector("#navigationsleiste")
-            .insertAdjacentElement("afterend", eingabeformular.html_generieren());
-        haushaltsbuch.gesamtbilanz_erstellen();
-        haushaltsbuch.gesamtbilanz_anzeigen();
-        this.datum_aktualisieren();
+        let navigationsleiste = document.querySelector("#navigationsleiste");
+        if (navigationsleiste !== null) {
+            navigationsleiste.insertAdjacentElement("afterend", eingabeformular.html_generieren());
+            haushaltsbuch.gesamtbilanz_erstellen();
+            haushaltsbuch.gesamtbilanz_anzeigen();
+            this.datum_aktualisieren();
+        }
     },
 };
