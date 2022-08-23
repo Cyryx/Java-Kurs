@@ -45,9 +45,7 @@ const haushaltsbuch = {
     html_eintrag_generieren(eintrag) {
 
         let listenpunkt = document.createElement("li");
-
         eintrag.get("typ") === "einnahme" ? listenpunkt.setAttribute("class", "einnahme") : listenpunkt.setAttribute("class", "ausgabe");
-
         listenpunkt.setAttribute("data-timestamp", eintrag.get("timestamp"));
 
         let datum = document.createElement("span");
@@ -76,11 +74,9 @@ const haushaltsbuch = {
         let icon = document.createElement("i");
         icon.setAttribute("class", "fas fa-trash");
         button.insertAdjacentElement("afterbegin", icon);
-
         this.eintrag_entfernen_event_hinzufuegen(listenpunkt);
 
         return listenpunkt;
-
     },
 
     eintrag_entfernen_event_hinzufuegen(listenpunkt) {
@@ -91,17 +87,14 @@ const haushaltsbuch = {
     },
 
     eintraege_anzeigen() {
-
+        ///////// ///////// ///////// ///////// ///////// ///////// ///////// ///////// ///////// ///////// /////////
         document.querySelectorAll(".monatsliste ul").forEach(eintragsliste =>
             eintragsliste.remove()
         );
-
         let eintragsliste = document.createElement("ul");
         this.eintraege.forEach((e) =>
             eintragsliste.insertAdjacentElement("beforeend", this.html_eintrag_generieren(e)));
-
         document.querySelector(".monatsliste").insertAdjacentElement("afterbegin", eintragsliste);
-
     },
 
     gesamtbilanz_erstellen() {
@@ -173,26 +166,17 @@ const haushaltsbuch = {
         div_gesamtbilanz.insertAdjacentElement("afterbegin", span_gesamtbilanz_name);
 
         let span_gesamtbilanz_summe = document.createElement("span");
-        this.gesamtbilanz.get("bilanz") >= 0
-            ? span_gesamtbilanz_summe.setAttribute("class", "positiv")
-            : this.gesamtbilanz.get("bilanz") < 0
-                ? span_gesamtbilanz_summe.setAttribute("class", "negativ")
-                : null
+        this.gesamtbilanz.get("bilanz") >= 0 ? span_gesamtbilanz_summe.setAttribute("class", "positiv") : span_gesamtbilanz_summe.setAttribute("class", "negativ");
 
         span_gesamtbilanz_summe.textContent = `${(this.gesamtbilanz.get("bilanz") / 100).toFixed(2).replace(/\./, ",")} €`;
         div_gesamtbilanz.insertAdjacentElement("beforeend", span_gesamtbilanz_summe);
         gesamtbilanz.insertAdjacentElement("beforeend", div_gesamtbilanz);
 
         return gesamtbilanz;
-
     },
 
     gesamtbilanz_anzeigen() {
-        document.querySelectorAll("#gesamtbilanz").forEach(gesamtbilanz =>
-            gesamtbilanz.remove()
-        );
+        document.querySelectorAll("#gesamtbilanz").forEach(gesamtbilanz => gesamtbilanz.remove());
         document.querySelector("body").insertAdjacentElement("beforeend", this.html_gesamtbilanz_generieren())
     }
-
-
 };

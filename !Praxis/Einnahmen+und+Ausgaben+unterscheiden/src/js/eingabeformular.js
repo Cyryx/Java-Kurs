@@ -14,7 +14,7 @@ const eingabeformular = {
         let typ;
         // if (formulardaten.einnahme === true) typ = "einnahme";
         // else if (formulardaten.ausgabe === true) typ = "ausgabe";
-        typ = formulardaten.einnahme === true ? "einnahme" : "ausgabe";
+        typ = formulardaten.einnahme === false ? "ausgabe" : "einnahme";
 
         return {
             titel: formulardaten.titel.trim(),
@@ -29,10 +29,8 @@ const eingabeformular = {
 
         if (formulardaten.titel === "")
             fehler.push("Titel");
-
         if (formulardaten.betrag === 0 || isNaN(formulardaten.betrag))
             fehler.push("Betrag");
-
         if (formulardaten.datum === null)
             fehler.push("Datum");
         return fehler;
@@ -88,9 +86,7 @@ const eingabeformular = {
     },
 
     fehlerbox_anzeigen(formular_fehler) {
-        let eingabeformular_container = document.querySelector(
-            "#eingabeformular-container"
-        );
+        let eingabeformular_container = document.querySelector("#eingabeformular-container");
         if (eingabeformular_container !== null)
             document.querySelector("#eingabeformular-container").insertAdjacentElement("afterbegin", this.html_fehlerbox_generieren(formular_fehler));
     },
@@ -106,7 +102,6 @@ const eingabeformular = {
         eingabeformular.setAttribute("id", "eingabeformular-container");
 
         eingabeformular.innerHTML = `   
-            
             <form id="eingabeformular" action="#" method="get"></form>
             <div class="eingabeformular-zeile">
                 <h1>Neue Einnahme / Ausgabe hinzufügen</h1>
