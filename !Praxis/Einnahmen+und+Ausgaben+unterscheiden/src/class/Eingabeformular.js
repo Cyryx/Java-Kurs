@@ -1,9 +1,9 @@
 "use strict"
 
-class Eingabeformular{
+class Eingabeformular {
     constructor() {
         this._html = this._html_generieren();
-}
+    }
 
     _formulardaten_holen(e) {
         return {
@@ -59,45 +59,16 @@ class Eingabeformular{
             let formular_fehler = this._formulardaten_validieren(formulardaten);
             if (formular_fehler.length === 0) {
                 haushaltsbuch.eintrag_hinzufuegen(formulardaten);
-                this._fehlerbox_entfernen();
+                let bestehende_fehlerbox = document.querySelector(".fehlerbox");
+                if (bestehende_fehlerbox !== null)
+                    bestehende_fehlerbox.remove();
                 e.target.reset();
                 this._datum_aktualisieren();
             } else {
-                this._fehlerbox_entfernen();
-                this._fehlerbox_anzeigen(formular_fehler);
+                let fehler = new Fehler("Einige Felder wurden nicht korrekt ausgeführt:", formular_fehler);
+               fehler.anzeigen();
             }
         });
-    }
-
-    _html_fehlerbox_generieren(formular_fehler) {
-        let fehlerbox = document.createElement("div");
-        fehlerbox.setAttribute("class", "fehlerbox");
-
-        let fehlertext = document.createElement("span");
-        fehlertext.textContent = "Es gibt Fehler in folgenden Eingabefeldern:";
-        fehlerbox.insertAdjacentElement("afterbegin", fehlertext);
-
-        let fehlerliste = document.createElement("ul");
-        formular_fehler.forEach((fehler) => {
-            let fehlerlistenpunkt = document.createElement("li");
-            fehlerlistenpunkt.textContent = fehler;
-            fehlerliste.insertAdjacentElement("beforeend", fehlerlistenpunkt);
-        });
-        fehlerbox.insertAdjacentElement("beforeend", fehlerliste);
-
-        return fehlerbox;
-    }
-
-    _fehlerbox_anzeigen(formular_fehler) {
-        let eingabeformular_container = document.querySelector("#eingabeformular-container");
-        if (eingabeformular_container !== null)
-            document.querySelector("#eingabeformular-container").insertAdjacentElement("afterbegin", this._html_fehlerbox_generieren(formular_fehler));
-    }
-
-    _fehlerbox_entfernen() {
-        let fehlerbox = document.querySelector(".fehlerbox");
-        if (fehlerbox !== null)
-            fehlerbox.remove();
     }
 
     _html_generieren() {
