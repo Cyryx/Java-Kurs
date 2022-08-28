@@ -6,12 +6,19 @@ const haushaltsbuch = {
     eintraege: [],
 
     eintrag_hinzufuegen(formulardaten) {
-        let neuer_eintrag = new Map();
-        neuer_eintrag.set("titel", formulardaten.titel);
-        neuer_eintrag.set("typ", formulardaten.typ);
-        neuer_eintrag.set("betrag", formulardaten.betrag);
-        neuer_eintrag.set("datum", formulardaten.datum);
-        neuer_eintrag.set("timestamp", Date.now());
+        let neuer_eintrag = new Eintrag
+            (
+                formulardaten.titel,
+                formulardaten.typ,
+                formulardaten.betrag,
+                formulardaten.datum
+            );
+        // let neuer_eintrag = new Map();
+        // neuer_eintrag.set("titel", formulardaten.titel);
+        // neuer_eintrag.set("typ", formulardaten.typ);
+        // neuer_eintrag.set("betrag", formulardaten.betrag);
+        // neuer_eintrag.set("datum", formulardaten.datum);
+        // neuer_eintrag.set("timestamp", Date.now());
         this.eintraege.push(neuer_eintrag);
         this.eintraege_sortieren();
         this.eintraege_anzeigen();
@@ -42,49 +49,49 @@ const haushaltsbuch = {
         });
     },
 
-    html_eintrag_generieren(eintrag) {
+    // html_eintrag_generieren(eintrag) {
 
-        let listenpunkt = document.createElement("li");
-        eintrag.get("typ") === "einnahme" ? listenpunkt.setAttribute("class", "einnahme") : listenpunkt.setAttribute("class", "ausgabe");
-        listenpunkt.setAttribute("data-timestamp", eintrag.get("timestamp"));
+    //     let listenpunkt = document.createElement("li");
+    //     eintrag.get("typ") === "einnahme" ? listenpunkt.setAttribute("class", "einnahme") : listenpunkt.setAttribute("class", "ausgabe");
+    //     listenpunkt.setAttribute("data-timestamp", eintrag.get("timestamp"));
 
-        let datum = document.createElement("span");
-        datum.setAttribute("class", "datum");
-        datum.textContent = eintrag.get("datum").toLocaleDateString("de-DE", {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit"
-        });
-        listenpunkt.insertAdjacentElement("afterbegin", datum);
+    //     let datum = document.createElement("span");
+    //     datum.setAttribute("class", "datum");
+    //     datum.textContent = eintrag.get("datum").toLocaleDateString("de-DE", {
+    //         year: "numeric",
+    //         month: "2-digit",
+    //         day: "2-digit"
+    //     });
+    //     listenpunkt.insertAdjacentElement("afterbegin", datum);
 
-        let titel = document.createElement("span");
-        titel.setAttribute("class", "titel");
-        titel.textContent = eintrag.get("titel");
-        datum.insertAdjacentElement("afterend", titel);
+    //     let titel = document.createElement("span");
+    //     titel.setAttribute("class", "titel");
+    //     titel.textContent = eintrag.get("titel");
+    //     datum.insertAdjacentElement("afterend", titel);
 
-        let betrag = document.createElement("span");
-        betrag.setAttribute("class", "betrag");
-        betrag.textContent = `${(eintrag.get("betrag") / 100).toFixed(2).replace(/\./, ",")} €`;
-        titel.insertAdjacentElement("afterend", betrag);
+    //     let betrag = document.createElement("span");
+    //     betrag.setAttribute("class", "betrag");
+    //     betrag.textContent = `${(eintrag.get("betrag") / 100).toFixed(2).replace(/\./, ",")} €`;
+    //     titel.insertAdjacentElement("afterend", betrag);
 
-        let button = document.createElement("button");
-        button.setAttribute("class", "entfernen-button");
-        betrag.insertAdjacentElement("afterend", button);
+    //     let button = document.createElement("button");
+    //     button.setAttribute("class", "entfernen-button");
+    //     betrag.insertAdjacentElement("afterend", button);
 
-        let icon = document.createElement("i");
-        icon.setAttribute("class", "fas fa-trash");
-        button.insertAdjacentElement("afterbegin", icon);
-        this.eintrag_entfernen_event_hinzufuegen(listenpunkt);
+    //     let icon = document.createElement("i");
+    //     icon.setAttribute("class", "fas fa-trash");
+    //     button.insertAdjacentElement("afterbegin", icon);
+    //     this.eintrag_entfernen_event_hinzufuegen(listenpunkt);
 
-        return listenpunkt;
-    },
+    //     return listenpunkt;
+    // },
 
-    eintrag_entfernen_event_hinzufuegen(listenpunkt) {
-        listenpunkt.querySelector(".entfernen-button").addEventListener("click", click => {
-            let timestamp = click.target.parentElement.getAttribute("data-timestamp")
-            this.eintrag_entfernen(timestamp);
-        });
-    },
+    // eintrag_entfernen_event_hinzufuegen(listenpunkt) {
+    //     listenpunkt.querySelector(".entfernen-button").addEventListener("click", click => {
+    //         let timestamp = click.target.parentElement.getAttribute("data-timestamp")
+    //         this.eintrag_entfernen(timestamp);
+    //     });
+    // },
 
     eintraege_anzeigen() {
         ///////// ///////// ///////// ///////// ///////// ///////// ///////// ///////// ///////// ///////// /////////
@@ -93,7 +100,7 @@ const haushaltsbuch = {
         );
         let eintragsliste = document.createElement("ul");
         this.eintraege.forEach((e) =>
-            eintragsliste.insertAdjacentElement("beforeend", this.html_eintrag_generieren(e)));
+            eintragsliste.insertAdjacentElement("beforeend", this.html_intrag_generieren(e)));
         document.querySelector(".monatsliste").insertAdjacentElement("afterbegin", eintragsliste);
     },
 
